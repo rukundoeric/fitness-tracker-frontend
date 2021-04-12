@@ -1,4 +1,4 @@
-export default (state = {}, action) => {
+export default (state = { status: '' }, action) => {
   const { type, payload, status } = action;
   switch (type) {
     case 'USER_LOGIN':

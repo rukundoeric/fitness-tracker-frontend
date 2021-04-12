@@ -1,17 +1,60 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import cookie from 'react-cookies';
+import QueryString from 'query-string';
 import image from '../../assets/images/logo.jpg';
 import Inputfield from '../commons/input';
+import { logIn } from '../../redux/actions/Auth';
 
-const Login = props => {
-  const { res } = props;
+const Login = ({
+  logIn, auth, location, history,
+}) => {
+  const progressBar = useRef();
+  const emailInput = useRef();
+  const passwordInput = useRef();
+  const handleLogin = e => {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    const email = data.get('email');
+    const password = data.get('password');
+    logIn({ email, password });
+  };
+  const handleLoginSuccess = user => {
+    cookie.save('ft-current-user', user);
+    const redirect = location.state ? location.state.redirect
+      : QueryString.parse(location.search).redirect;
+    history.push(redirect || '/');
+  };
+
+  useEffect(() => {/
+    switch (auth.status) {
+      case 'success': {
+        handleLoginSuccess(JSON.stringify(auth.data.user));
+        break;
+      }
+      case 'pending': {
+        progressBar.current.classList.remove('hidden');
+        emailInput.current.classList.remove('errorresponse');
+        passwordInput.current.classList.remove('errorresponse');
+        break;
+      }
+      case 'fail': {
+        progressBar.current.classList.add('hidden');
+        emailInput.current.classList.add('errorresponse');
+        passwordInput.current.classList.add('errorresponse');
+        break;
+      }
+      default:
+    }
+  }, [auth]);
+
   return (
     <div className="row login-container ">
       <div className="container-fluid">
         <div className="valign-wrapper screenHeight d-flex align-items-center justify-content-center">
           <div className="col-md-8 card   setMaxWidth  inner-container ">
-            <div id="progress-bar" className="hidden">
+            <div ref={progressBar} className="hidden">
               <div className="progress">
                 <div className="indeterminate"> </div>
               </div>
@@ -25,9 +68,10 @@ const Login = props => {
               <form
                 id="login-form"
                 className="form"
-                onSubmit={e => console.log(e)}
+                onSubmit={handleLogin}
               >
                 <Inputfield
+                  refValue={emailInput}
                   label="Email"
                   type="email"
                   id="email"
@@ -36,6 +80,7 @@ const Login = props => {
                   appendIcon={<i className="icon-user" />}
                 />
                 <Inputfield
+                  refValue={passwordInput}
                   label="Password"
                   type="password"
                   id="password"
@@ -78,11 +123,24 @@ const Login = props => {
 };
 
 Login.propTypes = {
-  user: PropTypes.shape({ }).isRequired,
+  auth: PropTypes.shape({
+    data: PropTypes.shape({
+      user: PropTypes.shape({}),
+    }),
+    status: PropTypes.string.isRequired,
+  }).isRequired,
+  logIn: PropTypes.func.isRequired,
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      redirect: PropTypes.string,
+    }),
+    search: PropTypes.shape({}),
+  }).isRequired,
+  history: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-const mapStateToProps = ({ currentUser }) => ({
-  currentUser,
+const mapStateToProps = ({ auth }) => ({
+  auth,
 });
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps, { logIn })(Login);

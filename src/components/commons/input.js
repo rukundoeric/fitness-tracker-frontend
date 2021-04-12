@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function input({
+  refValue,
   label,
   type,
   id,
@@ -13,6 +14,7 @@ export default function input({
       <label htmlFor={label}>{label}</label>
       <div className="input-group d-flex">
         <input
+          ref={refValue}
           type={type}
           id={id}
           className={`txts-inputs ${appendIcon ? 'border-2' : 'border-1'}`}
