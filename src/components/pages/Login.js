@@ -27,7 +27,7 @@ const Login = ({
     history.push(redirect || '/');
   };
 
-  useEffect(() => {/
+  useEffect(() => {
     switch (auth.status) {
       case 'success': {
         handleLoginSuccess(JSON.stringify(auth.data.user));
@@ -88,18 +88,15 @@ const Login = ({
                   name="password"
                   appendIcon={<i className="icon-lock" />}
                 />
-                {/* {this.state.show_error ? (
-                  <div className="error-container d-flex align-items-center">
+                {auth.data.error ? (
+                  <div className="error-container d-flex align-items-center mt-3">
                     <span className="error" id="error">
-                      {this.props.loginResponse.data.message}
-                    </span>
-                    <span>
-                      <i className="fas fa-times" />
+                      {auth.data.error.message}
                     </span>
                   </div>
                 ) : (
                   <div />
-                )} */}
+                )}
                 <br />
                 <small className="forget-password">
                   <span className="pr-3">Forgot password?</span>
@@ -126,6 +123,9 @@ Login.propTypes = {
   auth: PropTypes.shape({
     data: PropTypes.shape({
       user: PropTypes.shape({}),
+      error: PropTypes.shape({
+        message: PropTypes.string,
+      }),
     }),
     status: PropTypes.string.isRequired,
   }).isRequired,
@@ -134,9 +134,11 @@ Login.propTypes = {
     state: PropTypes.shape({
       redirect: PropTypes.string,
     }),
-    search: PropTypes.shape({}),
+    search: PropTypes.string,
   }).isRequired,
-  history: PropTypes.arrayOf(PropTypes.string).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
 };
 
 const mapStateToProps = ({ auth }) => ({
