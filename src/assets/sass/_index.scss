@@ -5,9 +5,13 @@ body {
 }
 
 .home_container {
-  border: 1px solid red;
+  height: 100vh;
 }
 
-.measurements-content {
-  border: 1px solid blue;
+.fragments-content {
+  // border: 1px solid blue;
+}
+
+.menu_bar {
+  background-color: $menu_color;
 }

@@ -147,7 +147,7 @@ a {
 }
 
 .errorresponse {
-  border: 1px solid $error_response;
+  border: 0.5px solid $error_response;
   color: $error_response;
 }
 #link {
@@ -235,7 +235,8 @@ a {
 }
 
 .error-container {
-  background-color: rgb(255, 155, 155);
+  border-radius: 10px;
+  background-color: rgba(255, 172, 172, 0.719);
   padding: 15px;
   .error {
     flex-grow: 1;

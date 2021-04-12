@@ -5,21 +5,22 @@ body {
 }
 
 .home_container {
-  border: 1px solid red;
+  height: 100vh;
 }
 
-.measurements-content {
-  border: 1px solid blue;
+.menu_bar {
+  background-color: #323943;
 }
 
 .nav_bar {
-  border: 1px solid green;
+  background-color: #42B6e8;
   height: 60px;
 }
 
 .menu_bar {
   border: 1px solid #008000;
-  height: 60px;
+  min-height: 60px;
+  min-width: 300px;
 }
 
 a {
@@ -186,8 +187,8 @@ a {
 }
 
 .errorresponse {
-  border: 1px solid #fc7575;
-  color: #fc7575;
+  border: 0.5px solid rgba(252, 117, 117, 0.555);
+  color: rgba(252, 117, 117, 0.555);
 }
 
 #link {
@@ -275,7 +276,8 @@ a {
 }
 
 .error-container {
-  background-color: #ff9b9b;
+  border-radius: 10px;
+  background-color: rgba(255, 172, 172, 0.719);
   padding: 15px;
 }
 .error-container .error {
