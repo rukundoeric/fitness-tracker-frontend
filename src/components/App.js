@@ -1,10 +1,18 @@
 import React from 'react';
+// Import Icons
+import '../assets/css/icons/font-awesome/css/fontawesome-all.css';
+import '../assets/css/icons/simple-line-icons/css/simple-line-icons.css';
+import '../assets/css/icons/weather-icons/css/weather-icons.min.css';
+import '../assets/css/icons/themify-icons/themify-icons.css';
+import '../assets/css/icons/material-design-iconic-font/css/materialdesignicons.min.css';
+// Import styles
+import '../assets/css/style.css';
+
 import {
   Route,
   BrowserRouter,
   Switch,
 } from 'react-router-dom';
-import '../assets/css/style.css';
 import key from 'uniqid';
 import Home from './pages/Home';
 import publicRoutes from '../routes/Public';
@@ -21,23 +29,11 @@ const App = props => (
           component={prop.component}
         />
       ))}
-      {modelRoutes(props).map((prop, key) => (
+      {modelRoutes(props).map(prop => (
         <Route exact path={prop.path} key={key()} component={Home} />
       ))}
     </Switch>
   </BrowserRouter>
-  // <div className="app_container">
-  //   <div className="d-flex flex-column">
-  //     <Header />
-  //     <BrowserRouter>
-  //       <Switch>
-  //         <Route exact path="/" component={Home} />
-  //         {/* <Route exact path="/meal/:id" component={Meal} /> */}
-  //       </Switch>
-  //     </BrowserRouter>
-  //   </div>
-  //   <Menu />
-  // </div>
 );
 
 export default App;

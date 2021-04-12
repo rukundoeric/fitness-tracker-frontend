@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Menu() {
   return (
-    <nav>
+    <nav className="menu_bar">
       Menu Navigation
     </nav>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Measurements() {
   return (
-    <div>
+    <div className="measurements-content">
       Measuments;
     </div>
   );

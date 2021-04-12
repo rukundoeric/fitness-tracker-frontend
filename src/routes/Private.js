@@ -9,9 +9,7 @@ import Profile from '../components/fragments/Profile';
 import More from '../components/fragments/More';
 import Users from '../components/fragments/Users';
 
-function redirectToLogin({ location: { pathname } }) {
-  return <Redirect to={`/login?redirect=${pathname}`} />;
-}
+const redirectToLogin = ({ location: { pathname } }) => <Redirect to={`/login?redirect=${pathname}`} />;
 
 const Component = (props, component) => {
   if (props.currentUser) {
@@ -20,11 +18,21 @@ const Component = (props, component) => {
   return redirectToLogin;
 };
 
+const redirectToMeasurements = () => <Redirect to="/measurements" />;
+
 class Routes {
   constructor(props) {
     this.routes = [
       {
         path: '/',
+        name: 'Measuments',
+        icon: 'ti-loop',
+        component: redirectToMeasurements,
+        type: 'application',
+        access: ['admin', 'moderator', 'user'],
+      },
+      {
+        path: '/measurements',
         name: 'Measuments',
         icon: 'ti-loop',
         component: Component(props, Measurements),
@@ -113,16 +121,7 @@ class Routes {
   }
 }
 
-export const modelRoutes = props => {
-  const { currentUser } = props;
-  if (!currentUser) {
-    return [];
-  }
-  const routes = new Routes(props)
-    .filter('access', currentUser.role, true)
-    .get();
-  return routes;
-};
+export const modelRoutes = props => new Routes(props).get();
 
 export const navigationRoutes = props => {
   const { currentUser } = props;
