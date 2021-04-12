@@ -4,6 +4,10 @@ body {
   background-position: 50% 50%;
 }
 
+a {
+  text-decoration: none;
+}
+
 .home_container {
   height: 100vh;
 }
@@ -16,10 +20,14 @@ body {
   background-color: #42B6e8;
   height: 60px;
 }
+.nav_bar h4 {
+  color: white;
+}
 
 .menu_bar {
   min-height: 60px;
   min-width: 300px;
+  overflow: hidden;
 }
 .menu_bar .nav-item {
   height: 60px;
@@ -30,6 +38,13 @@ body {
 }
 .menu_bar .nav-item small {
   font-size: 10px;
+}
+.menu_bar .nav-item.active {
+  background-color: #42B6e8;
+}
+.menu_bar .nav-item.active i,
+.menu_bar .nav-item.active small {
+  color: white;
 }
 
 a {

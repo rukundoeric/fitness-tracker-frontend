@@ -1,9 +1,9 @@
 .menu_bar {
   min-height: 60px;
   min-width: 300px;
+  overflow: hidden;
 
   .nav-item {
-    // border: 1px solid white;
     height: 60px;
     i,
     small {
@@ -11,6 +11,14 @@
     }
     small {
       font-size: 10px;
+    }
+  }
+
+  .nav-item.active {
+    background-color: $color_accent_1;
+    i,
+    small {
+      color: white;
     }
   }
 }

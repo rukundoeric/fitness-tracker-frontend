@@ -12,7 +12,7 @@ import Header from '../layouts/Header';
 import Menu from '../layouts/Menu';
 
 const Home = props => {
-  const { currentUser } = props;
+  const { currentUser, match: { path } } = props;
 
   return (
     <div className="home_container d-flex flex-column flex-lg-row-reverse">
@@ -31,7 +31,9 @@ const Home = props => {
           </Switch>
         </div>
       </div>
-      <div className="menu_bar"><Menu currentUser={currentUser} /></div>
+      <div className="menu_bar">
+        <Menu currentUser={currentUser} path={path} />
+      </div>
     </div>
   );
 };
