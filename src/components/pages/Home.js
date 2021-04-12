@@ -7,7 +7,7 @@ import { Switch, Route } from 'react-router-dom';
 import key from 'uniqid';
 import jwt from 'jsonwebtoken';
 import cookie from 'react-cookies';
-import { modelRoutes, navigationRoutes } from '../../routes/Private';
+import { modelRoutes } from '../../routes/Private';
 import Header from '../layouts/Header';
 import Menu from '../layouts/Menu';
 
@@ -31,7 +31,7 @@ const Home = props => {
           </Switch>
         </div>
       </div>
-      <div className="menu_bar"><Menu /></div>
+      <div className="menu_bar"><Menu currentUser={currentUser} /></div>
     </div>
   );
 };

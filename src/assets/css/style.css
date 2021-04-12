@@ -18,9 +18,18 @@ body {
 }
 
 .menu_bar {
-  border: 1px solid #008000;
   min-height: 60px;
   min-width: 300px;
+}
+.menu_bar .nav-item {
+  height: 60px;
+}
+.menu_bar .nav-item i,
+.menu_bar .nav-item small {
+  color: #a7a7a7;
+}
+.menu_bar .nav-item small {
+  font-size: 10px;
 }
 
 a {

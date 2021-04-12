@@ -44,7 +44,7 @@ class Routes {
         name: 'Measuments',
         icon: 'ti-loop',
         component: Component(props, MeasurementDetails),
-        type: 'navigation',
+        type: 'model',
         access: ['admin', 'user'],
       },
       {
