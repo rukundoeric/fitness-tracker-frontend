@@ -26,8 +26,10 @@ a {
 
 .menu_bar {
   min-height: 60px;
-  min-width: 300px;
   overflow: hidden; }
+  @media (min-width: 1024px) {
+    .menu_bar {
+      width: 300px; } }
   .menu_bar .nav-item {
     height: 60px; }
     .menu_bar .nav-item i,
@@ -35,6 +37,9 @@ a {
       color: #a7a7a7; }
     .menu_bar .nav-item small {
       font-size: 10px; }
+    @media (min-width: 1024px) {
+      .menu_bar .nav-item small {
+        font-size: 15px; } }
   .menu_bar .nav-item.active {
     background-color: #42B6e8; }
     .menu_bar .nav-item.active i,
@@ -325,7 +330,7 @@ a {
   to {
     left: 0; } }
 .more-container {
-  background-color: #eeeff1;
+  background-color: #f3f3f3;
   height: 100%; }
   .more-container .section-1 {
     background-color: white; }
@@ -342,12 +347,19 @@ a {
     color: #8f8f8f; }
 
 .things-to-measure {
-  height: 80vh; }
-  .things-to-measure .section-t-1 {
-    height: 100%;
-    border: 1px solid rebeccapurple; }
-  .things-to-measure .section-t-2 {
-    border: 1px solid red; }
+  background-color: #f3f3f3;
+  height: 100%; }
+  .things-to-measure .ttm-item {
+    background-color: white; }
+    .things-to-measure .ttm-item img {
+      width: 30px;
+      height: 30px; }
+    .things-to-measure .ttm-item span:nth-of-type(1) {
+      color: #838383; }
+    .things-to-measure .ttm-item small:nth-of-type(1) {
+      color: #c9c9c9; }
+    .things-to-measure .ttm-item small:nth-of-type(2) {
+      color: #838383; }
 
 .btn-create {
   background-color: #97E493;

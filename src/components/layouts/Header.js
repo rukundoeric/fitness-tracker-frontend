@@ -20,7 +20,7 @@ const toAdd = path => {
 const Header = ({ path, goBack }) => (
   <header className="nav_bar d-flex justify-content-between justify-lg-content-start align-items-center px-4">
     {withBack.includes(path) ? (<button type="button" onClick={goBack} className="ti-angle-left" />) : (<div />)}
-    <span className="text-capitalize">{path.substring(1, path.length)}</span>
+    <span className="text-capitalize">{path.substring(1, path.length).split('-').join(' ')}</span>
     {withAdd.includes(path) ? (<Link to={toAdd(path)}><i className="ti-plus" /></Link>) : (<div />)}
   </header>
 );
