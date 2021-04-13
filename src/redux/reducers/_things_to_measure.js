@@ -1,36 +1,33 @@
 const initialState = {
-  ttResponce: {
-    data: {},
-  },
-  thingsToMeasure: [],
+  ttResponce: {},
+  ttmList: [],
 };
 
-export default (state = initialState, action) => {
-  const { type, payload, status } = action;
+export default (state = initialState, action, status) => {
+  const { type, payload } = action;
+
   switch (type) {
+    case 'GET_THINGS_TO_MEASURE':
+      return {
+        ...state,
+        ttmList: payload,
+      };
+
     case 'CREATE_THING_TO_MEASURE':
       return {
         ...state,
         ttResponce: {
-          ...state.ttResponce,
           ...payload,
           status,
         },
       };
-    case 'GET_THINGS_TO_MEASURE':
-      return {
-        ...state,
-        thingsToMeasure: {
-          ...payload,
-        },
-      };
+
     case 'T_T_M_RESET':
       return {
         ...state,
-        ttResponce: {
-          ...initialState.ttResponce,
-        },
+        ttResponce: { },
       };
+
     default:
       return state;
   }

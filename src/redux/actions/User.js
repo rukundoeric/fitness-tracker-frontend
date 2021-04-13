@@ -1,4 +1,1 @@
-
-const setCurrentUser = () => {
-  
-}
+const setCurrentUser = () => {};

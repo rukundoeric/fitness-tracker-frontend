@@ -22,3 +22,23 @@ export const createThingToMeasure = (body, token) => async dispach => {
 export const ttReset = () => async dispach => {
   dispach({ type: 'T_T_M_RESET' });
 };
+
+export const getThingsToMeasure = token => async dispach => {
+  // dispach({ type: 'GET_THINGS_TO_MEASURE', status: 'pending' });
+  try {
+    const { data: { data } } = await axios.get(thingsToMeasure, {}, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    console.log('data', data);
+    dispach({
+      type: 'GET_THINGS_TO_MEASURE',
+      payload: data.things_to_measures,
+      status: 'success',
+    });
+  } catch ({ response: { data } }) {
+    console.log('error', data);
+    dispach({ type: 'GET_THINGS_TO_MEASURE', payload: data, status: 'fail' });
+  }
+};
