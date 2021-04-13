@@ -1,9 +1,33 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-export default function Header() {
-  return (
-    <header className="nav_bar d-flex justify-content-center justify-lg-content-start align-items-center">
-      <h4>Header</h4>
-    </header>
-  );
-}
+const withAdd = ['/things-to-measure', '/measurements'];
+const withBack = ['/things-to-measure', '/new-thing-to-measure'];
+
+const toAdd = path => {
+  switch (path) {
+    case '/things-to-measure':
+      return '/new-thing-to-measure';
+    case '/measurements':
+      return '/new-measurement';
+    default:
+      return '/';
+  }
+};
+
+const Header = ({ path, goBack }) => (
+  <header className="nav_bar d-flex justify-content-between justify-lg-content-start align-items-center px-4">
+    {withBack.includes(path) ? (<button type="button" onClick={goBack} className="ti-angle-left" />) : (<div />)}
+    <span className="text-capitalize">{path.substring(1, path.length)}</span>
+    {withAdd.includes(path) ? (<Link to={toAdd(path)}><i className="ti-plus" /></Link>) : (<div />)}
+  </header>
+);
+
+Header.propTypes = {
+  path: PropTypes.string.isRequired,
+  goBack: PropTypes.func.isRequired,
+};
+
+export default Header;

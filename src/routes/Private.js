@@ -2,7 +2,8 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import _ from 'lodash';
 import Measurements from '../components/fragments/Measurements';
-import MeasurementDetails from '../components/fragments/MeasurementDetails';
+import ThingsToMeasure from '../components/fragments/ThingsToMeasure';
+import NewThingToMeasure from '../components/fragments/NewThingToMeasure';
 import NewMeasurement from '../components/fragments/NewMeasurement';
 import Progress from '../components/fragments/Progress';
 import Profile from '../components/fragments/Profile';
@@ -24,6 +25,14 @@ class Routes {
   constructor(props) {
     this.routes = [
       {
+        path: '/new-measurement',
+        name: 'Add measure',
+        icon: 'ti-plus',
+        component: Component(props, NewMeasurement),
+        type: 'navigation',
+        access: ['admin', 'user'],
+      },
+      {
         path: '/',
         name: 'Measuments',
         icon: 'ti-loop',
@@ -40,25 +49,9 @@ class Routes {
         access: ['admin', 'user'],
       },
       {
-        path: '/measurement-details',
-        name: 'Measuments',
-        icon: 'ti-loop',
-        component: Component(props, MeasurementDetails),
-        type: 'model',
-        access: ['admin', 'user'],
-      },
-      {
-        path: '/new-measurement',
-        name: 'Add',
-        icon: 'icon-user',
-        component: Component(props, NewMeasurement),
-        type: 'navigation',
-        access: ['admin', 'user'],
-      },
-      {
         path: '/progress',
         name: 'Progress',
-        icon: 'icon-settings',
+        icon: 'ti-pie-chart',
         component: Component(props, Progress),
         type: 'navigation',
         access: ['admin', 'user'],
@@ -66,7 +59,7 @@ class Routes {
       {
         path: '/more',
         name: 'More',
-        icon: 'icon-settings',
+        icon: 'ti-more',
         component: Component(props, More),
         type: 'navigation',
         access: ['admin', 'user'],
@@ -91,7 +84,15 @@ class Routes {
         path: '/things-to-measure',
         name: 'More',
         icon: 'icon-settings',
-        component: Component(props, Users),
+        component: Component(props, ThingsToMeasure),
+        type: 'model',
+        access: ['admin'],
+      },
+      {
+        path: '/new-thing-to-measure',
+        name: 'More',
+        icon: 'icon-settings',
+        component: Component(props, NewThingToMeasure),
         type: 'model',
         access: ['admin'],
       },

@@ -10,7 +10,7 @@ export default function input({
   appendIcon,
 }) {
   return (
-    <div className="form-group">
+    <div className="form-group my-3">
       <label htmlFor={label}>{label}</label>
       <div className="input-group d-flex">
         <input
