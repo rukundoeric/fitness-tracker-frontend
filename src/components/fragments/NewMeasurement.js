@@ -4,7 +4,7 @@ import cookie from 'react-cookies';
 import jwt from 'jsonwebtoken';
 import key from 'uniqid';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { getThingsToMeasure } from '../../redux/actions/ThingsToMeasure';
 import Icon from '../commons/image';
 
@@ -36,8 +36,10 @@ const NewMeasurement = ({
         </div>
       </div>
       <div className="p-2 row">
-        {ttmList ? ttmList.map(({ icon, name, unit }) => (
-          <div key={key()} className="ttm-item p-3 d-flex col-6 justify-content-center align-items-center">
+        {ttmList ? ttmList.map(({
+          id, icon, name, unit,
+        }) => (
+          <Link to={`new-measurement/${id}`} key={key()} className="ttm-item p-3 d-flex col-6 justify-content-center align-items-center">
             <div className="d-flex">
               <div className="d-flex">
                 <Icon
@@ -53,7 +55,7 @@ const NewMeasurement = ({
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         )) : (<div />)}
       </div>
     </div>

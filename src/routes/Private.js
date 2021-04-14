@@ -8,6 +8,7 @@ import NewMeasurement from '../components/fragments/NewMeasurement';
 import Progress from '../components/fragments/Progress';
 import More from '../components/fragments/More';
 import Help from '../components/fragments/Help';
+import CreateMeasurement from '../components/fragments/CreateMeasurement';
 import Users from '../components/fragments/Users';
 
 const redirectToMeasurements = () => <Redirect to="/measurements" />;
@@ -15,14 +16,6 @@ const redirectToMeasurements = () => <Redirect to="/measurements" />;
 class Routes {
   constructor() {
     this.routes = [
-      {
-        path: '/new-measurement',
-        name: 'Add measure',
-        icon: 'ti-plus',
-        Component: NewMeasurement,
-        type: 'navigation',
-        access: ['admin', 'user'],
-      },
       {
         path: '/',
         name: 'Measuments',
@@ -37,6 +30,22 @@ class Routes {
         icon: 'ti-loop',
         Component: Measurements,
         type: 'navigation',
+        access: ['admin', 'user'],
+      },
+      {
+        path: '/new-measurement',
+        name: 'Add measure',
+        icon: 'ti-plus',
+        Component: NewMeasurement,
+        type: 'navigation',
+        access: ['admin', 'user'],
+      },
+      {
+        path: '/new-measurement/:id',
+        name: 'Add measure',
+        icon: 'ti-plus',
+        Component: CreateMeasurement,
+        type: 'model',
         access: ['admin', 'user'],
       },
       {
