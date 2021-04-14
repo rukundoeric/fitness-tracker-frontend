@@ -1,14 +1,17 @@
-import React from "react";
+import React from 'react';
 
-export default function image({ src, name }) {
+export default function image({
+  src, defaultSrc, name, classes, alt,
+}) {
+  const addDefaultSrc = e => {
+    e.target.src = defaultSrc;
+  };
   return (
-    <div className="avata">
+    <div>
       {src ? (
-        <img className="pic" src={src} alt="avata"></img>
+        <img onError={addDefaultSrc} className={classes} src={src} alt={alt} />
       ) : (
-        <label>
-          <div className="pic">{name.charAt(0)}</div>
-        </label>
+        <div className={classes}>{name.charAt(0)}</div>
       )}
     </div>
   );
