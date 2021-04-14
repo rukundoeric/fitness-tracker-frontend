@@ -405,6 +405,20 @@ a {
     .new-measurements .ttm-item:hover {
       background-color: #e4e4e4; }
 
+.create-measurements {
+  height: 100%; }
+  .create-measurements .div-1 {
+    height: 70px; }
+    .create-measurements .div-1 .text-h {
+      font-size: 17px;
+      font-weight: 400;
+      color: #5f5f5f; }
+      .create-measurements .div-1 .text-h i {
+        color: #252525;
+        font-size: 20px; }
+  .create-measurements .div-2 {
+    background-color: #f3f3f3; }
+
 .loader {
   height: 100%; }
   .loader .lds-default {

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
 import { NotBeforeError } from 'jsonwebtoken';
-import { thingsToMeasure } from './_api';
+import { thingsToMeasure, thingToMeasure } from './_api';
 
 export const createThingToMeasure = (body, token) => async dispach => {
   try {
@@ -38,6 +38,24 @@ export const getThingsToMeasure = token => async dispach => {
       status: 'success',
     });
   } catch (error) {
-    dispach({ type: 'GET_THINGS_TO_MEASURES', payload: error, status: 'fail' });
+    dispach({ type: 'GET_THINGS_TO_MEASURE', payload: error, status: 'fail' });
+  }
+};
+
+export const getThingToMeasure = (token, id) => async dispach => {
+  dispach({ type: 'GET_THING_TO_MEASURE', status: 'pending' });
+  try {
+    const { data: { data } } = await axios.get(thingToMeasure(id), {
+      headers: {
+        Authorization: token,
+      },
+    });
+    dispach({
+      type: 'GET_THING_TO_MEASURE',
+      payload: data,
+      status: 'success',
+    });
+  } catch (error) {
+    dispach({ type: 'GET_THING_TO_MEASURE', payload: error, status: 'fail' });
   }
 };

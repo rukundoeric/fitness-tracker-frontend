@@ -4,7 +4,12 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const withAdd = ['/things-to-measure', '/measurements'];
-const withBack = ['/things-to-measure', '/new-thing-to-measure', '/help'];
+const withBack = [
+  '/things-to-measure',
+  '/new-thing-to-measure',
+  '/new-measurement/:id',
+  '/help',
+];
 
 const toAdd = path => {
   switch (path) {

@@ -7,6 +7,7 @@ import '../assets/css/icons/themify-icons/themify-icons.css';
 import '../assets/css/icons/material-design-iconic-font/css/materialdesignicons.min.css';
 // Import styles
 import '../assets/css/style.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
   Route,
@@ -14,12 +15,14 @@ import {
   Switch,
 } from 'react-router-dom';
 import key from 'uniqid';
+import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home';
 import publicRoutes from '../routes/Public';
 import { modelRoutes } from '../routes/Private';
 
 const App = props => (
   <BrowserRouter>
+    <ToastContainer />
     <Switch>
       {publicRoutes.map(prop => (
         <Route
