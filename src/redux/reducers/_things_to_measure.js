@@ -1,16 +1,17 @@
 const initialState = {
-  ttResponce: {},
+  ttResponce: { data: {} },
   ttmList: [],
 };
 
-export default (state = initialState, action, status) => {
-  const { type, payload } = action;
+export default (state = initialState, action) => {
+  const { type, payload, status } = action;
 
   switch (type) {
     case 'GET_THINGS_TO_MEASURE':
       return {
         ...state,
         ttmList: payload,
+        status,
       };
 
     case 'CREATE_THING_TO_MEASURE':
@@ -25,7 +26,7 @@ export default (state = initialState, action, status) => {
     case 'T_T_M_RESET':
       return {
         ...state,
-        ttResponce: { },
+        ttResponce: { data: {} },
       };
 
     default:

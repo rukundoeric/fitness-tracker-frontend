@@ -6,29 +6,20 @@ import ThingsToMeasure from '../components/fragments/ThingsToMeasure';
 import NewThingToMeasure from '../components/fragments/NewThingToMeasure';
 import NewMeasurement from '../components/fragments/NewMeasurement';
 import Progress from '../components/fragments/Progress';
-import Profile from '../components/fragments/Profile';
 import More from '../components/fragments/More';
+import Help from '../components/fragments/Help';
 import Users from '../components/fragments/Users';
-
-const redirectToLogin = ({ location: { pathname } }) => <Redirect to={`/login?redirect=${pathname}`} />;
-
-const Component = (props, component) => {
-  if (props.currentUser) {
-    return component;
-  }
-  return redirectToLogin;
-};
 
 const redirectToMeasurements = () => <Redirect to="/measurements" />;
 
 class Routes {
-  constructor(props) {
+  constructor() {
     this.routes = [
       {
         path: '/new-measurement',
         name: 'Add measure',
         icon: 'ti-plus',
-        component: Component(props, NewMeasurement),
+        Component: NewMeasurement,
         type: 'navigation',
         access: ['admin', 'user'],
       },
@@ -36,7 +27,7 @@ class Routes {
         path: '/',
         name: 'Measuments',
         icon: 'ti-loop',
-        component: redirectToMeasurements,
+        Component: redirectToMeasurements,
         type: 'application',
         access: ['admin', 'moderator', 'user'],
       },
@@ -44,7 +35,7 @@ class Routes {
         path: '/measurements',
         name: 'Measuments',
         icon: 'ti-loop',
-        component: Component(props, Measurements),
+        Component: Measurements,
         type: 'navigation',
         access: ['admin', 'user'],
       },
@@ -52,7 +43,7 @@ class Routes {
         path: '/progress',
         name: 'Progress',
         icon: 'ti-pie-chart',
-        component: Component(props, Progress),
+        Component: Progress,
         type: 'navigation',
         access: ['admin', 'user'],
       },
@@ -60,23 +51,15 @@ class Routes {
         path: '/more',
         name: 'More',
         icon: 'ti-more',
-        component: Component(props, More),
+        Component: More,
         type: 'navigation',
-        access: ['admin', 'user'],
-      },
-      {
-        path: '/profile',
-        name: 'More',
-        icon: 'icon-settings',
-        component: Component(props, Profile),
-        type: 'model',
         access: ['admin', 'user'],
       },
       {
         path: '/users',
         name: 'More',
         icon: 'icon-settings',
-        component: Component(props, Users),
+        Component: Users,
         type: 'model',
         access: ['admin'],
       },
@@ -84,7 +67,7 @@ class Routes {
         path: '/things-to-measure',
         name: 'More',
         icon: 'icon-settings',
-        component: Component(props, ThingsToMeasure),
+        Component: ThingsToMeasure,
         type: 'model',
         access: ['admin'],
       },
@@ -92,9 +75,17 @@ class Routes {
         path: '/new-thing-to-measure',
         name: 'More',
         icon: 'icon-settings',
-        component: Component(props, NewThingToMeasure),
+        Component: NewThingToMeasure,
         type: 'model',
         access: ['admin'],
+      },
+      {
+        path: '/help',
+        name: 'More',
+        icon: 'ti-help',
+        Component: Help,
+        type: 'model',
+        access: ['admin', 'user'],
       },
     ];
   }
@@ -122,16 +113,11 @@ class Routes {
   }
 }
 
-export const modelRoutes = props => new Routes(props).get();
+export const modelRoutes = () => new Routes().get();
 
-export const navigationRoutes = props => {
-  const { currentUser } = props;
-  if (!currentUser) {
-    return [];
-  }
-  const routes = new Routes(props)
+export const navigationRoutes = () => {
+  const routes = new Routes()
     .filter('type', 'navigation')
-    .filter('access', currentUser.role, true)
     .get();
   return routes;
 };

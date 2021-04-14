@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import axios from 'axios';
+import { NotBeforeError } from 'jsonwebtoken';
 import { thingsToMeasure } from './_api';
 
 export const createThingToMeasure = (body, token) => async dispach => {
-  dispach({ type: 'CREATE_THING_TO_MEASURE', status: 'pending' });
   try {
     const { data } = await axios.post(thingsToMeasure, body, {
       headers: {
@@ -24,21 +25,19 @@ export const ttReset = () => async dispach => {
 };
 
 export const getThingsToMeasure = token => async dispach => {
-  // dispach({ type: 'GET_THINGS_TO_MEASURE', status: 'pending' });
+  dispach({ type: 'GET_THINGS_TO_MEASURE', status: 'pending' });
   try {
-    const { data: { data } } = await axios.get(thingsToMeasure, {}, {
+    const { data: { data } } = await axios.get(thingsToMeasure, {
       headers: {
         Authorization: token,
       },
     });
-    console.log('data', data);
     dispach({
       type: 'GET_THINGS_TO_MEASURE',
-      payload: data.things_to_measures,
+      payload: data.things_to_measure,
       status: 'success',
     });
-  } catch ({ response: { data } }) {
-    console.log('error', data);
-    dispach({ type: 'GET_THINGS_TO_MEASURE', payload: data, status: 'fail' });
+  } catch (error) {
+    dispach({ type: 'GET_THINGS_TO_MEASURES', payload: error, status: 'fail' });
   }
 };
