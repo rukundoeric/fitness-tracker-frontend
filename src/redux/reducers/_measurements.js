@@ -1,5 +1,6 @@
 const initialState = {
   cmResponse: {},
+  mList: [],
 };
 
 export default (state = initialState, action) => {
@@ -13,6 +14,11 @@ export default (state = initialState, action) => {
           ...payload,
           status,
         },
+      };
+    case 'GET_MEASUREMENTS':
+      return {
+        ...state,
+        mList: payload,
       };
     case 'C_M_RESET':
       return {
