@@ -382,6 +382,29 @@ a {
     .help-container p i {
       color: #42B6e8; }
 
+.new-measurements {
+  background-color: #f3f3f3;
+  height: 100%; }
+  .new-measurements .ttm-item {
+    background-color: white;
+    border: 4px solid #f3f3f3;
+    height: 150px;
+    cursor: pointer; }
+    .new-measurements .ttm-item img {
+      width: 30px;
+      height: 30px; }
+    .new-measurements .ttm-item span:nth-of-type(1) {
+      color: #838383;
+      font-size: 13px; }
+    .new-measurements .ttm-item .info small:nth-of-type(1) {
+      color: #c9c9c9;
+      font-size: 12px; }
+    .new-measurements .ttm-item .info small:nth-of-type(2) {
+      color: #838383;
+      font-size: 11px; }
+    .new-measurements .ttm-item:hover {
+      background-color: #e4e4e4; }
+
 .banner-pl .div-1,
 .banner-pl .div-2,
 .banner-pl .div-3 {
