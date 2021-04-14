@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import cookie from 'react-cookies';
 import key from 'uniqid';
@@ -10,10 +11,14 @@ import { createThingToMeasure, ttReset } from '../../redux/actions/ThingsToMeasu
 const NewThingToMeasure = ({
   createThingToMeasure,
   ttReset,
-  currentUser: { token },
+  currentUser,
   thingsToMeasure: { ttResponce },
   history,
 }) => {
+  if (!currentUser) {
+    return (<Redirect to="/login?redirect=/new-thing-to-measure" />);
+  }
+
   const progressBar = useRef();
   const handleSave = e => {
     e.preventDefault();
@@ -21,20 +26,19 @@ const NewThingToMeasure = ({
     const icon = data.get('icon');
     const name = data.get('name');
     const unit = data.get('unit');
-    createThingToMeasure({ icon, name, unit }, token);
+    createThingToMeasure({ icon, name, unit }, currentUser.token);
+    progressBar.current.classList.remove('hidden');
   };
+
+  useEffect(() => { ttReset(); }, []);
   useEffect(() => {
     switch (ttResponce.status) {
       case 'success': {
-        ttReset();
         history.push('/things-to-measure');
         break;
       }
-      case 'pending': {
-        progressBar.current.classList.remove('hidden');
-        break;
-      }
       case 'fail': {
+        progressBar.current.classList.add('hidden');
         break;
       }
       default:
@@ -144,7 +148,7 @@ const mapStateToProps = state => {
     jwt.verify(currentUser.token, process.env.REACT_APP_TOKEN_SECRET);
     return { ...state, currentUser };
   } catch (error) {
-    return { ...state, error };
+    return { ...state, currentUser: null };
   }
 };
 

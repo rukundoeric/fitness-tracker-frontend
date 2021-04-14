@@ -71,3 +71,17 @@
   color: white;
   background-color: $color_primary_light;
 }
+
+.help-container {
+  background-color: #f3f3f3;
+  height: 100%;
+
+  p {
+    font-size: 15px;
+    color: rgb(85, 85, 85);
+
+    i {
+      color: $color_accent_1;
+    }
+  }
+}

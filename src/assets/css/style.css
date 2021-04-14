@@ -373,6 +373,15 @@ a {
   color: white;
   background-color: #9CD1FF; }
 
+.help-container {
+  background-color: #f3f3f3;
+  height: 100%; }
+  .help-container p {
+    font-size: 15px;
+    color: #555555; }
+    .help-container p i {
+      color: #42B6e8; }
+
 .banner-pl .div-1,
 .banner-pl .div-2,
 .banner-pl .div-3 {

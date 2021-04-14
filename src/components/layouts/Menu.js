@@ -5,16 +5,16 @@ import image from '../../assets/images/logo.jpg';
 import { navigationRoutes } from '../../routes/Private';
 import NavItem from '../items/NavItem';
 
-export default function Menu(props) {
+export default function Menu({ path }) {
   return (
     <nav>
       <div className="d-none d-lg-block py-lg-5">
         <img src={image} className="logoImage" alt="App logo" />
       </div>
       <div className="row">
-        {navigationRoutes(props)
+        {navigationRoutes()
           .map(nav => (
-            <NavItem nav={nav} path={props.path} key={key()} />
+            <NavItem nav={nav} path={path} key={key()} />
           ))}
       </div>
     </nav>

@@ -8,12 +8,6 @@ import { connect } from 'react-redux';
 
 const options = [
   {
-    icon: 'ti-user',
-    title: 'Profile',
-    access: ['user', 'admin'],
-    path: '/more',
-  },
-  {
     icon: 'ti-settings',
     title: 'Manage things to measure',
     access: ['admin'],
@@ -23,7 +17,7 @@ const options = [
     icon: 'ti-help',
     title: 'Help',
     access: ['user', 'admin'],
-    path: '/more',
+    path: '/help',
   },
 ];
 
