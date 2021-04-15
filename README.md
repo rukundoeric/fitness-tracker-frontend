@@ -1,6 +1,14 @@
 # Fitness Tracker
 Do you want to improve your fitness? Then Fitness Tracker is the perfect answer for you. With this platform, users can track and improve body fitness in no time.
 
+| Signup      | Login       | Login       |
+| ----------- | ----------- | ----------- |
+| ![localhost_3001_measurements(Galaxy S5) (6)](https://user-images.githubusercontent.com/45217364/114933351-dbec8480-9e38-11eb-9cd2-591c30c1701c.png)      | ![localhost_3001_measurements(Galaxy S5) (5)](https://user-images.githubusercontent.com/45217364/114933483-01798e00-9e39-11eb-880f-4ebed7dbebc3.png)       | ![localhost_3001_measurements(Galaxy S5) (2)](https://user-images.githubusercontent.com/45217364/114933562-16562180-9e39-11eb-92a0-56fac5b0cead.png)       |
+| New Measurement      | Progress       | More       |
+| ![localhost_3001_measurements(Galaxy S5) (7)](https://user-images.githubusercontent.com/45217364/114934432-26223580-9e3a-11eb-8259-d4d2b3c6eac1.png)      | ![localhost_3001_measurements(Galaxy S5) (1)](https://user-images.githubusercontent.com/45217364/114934604-608bd280-9e3a-11eb-84cf-9531397e3e7d.png)       | ![localhost_3001_measurements(Galaxy S5) (4)](https://user-images.githubusercontent.com/45217364/114934748-9af56f80-9e3a-11eb-84b4-5eff83fa2f87.png)      |
+
+
+
 ## Built With
 
 - React.js
