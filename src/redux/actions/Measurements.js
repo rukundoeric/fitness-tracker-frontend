@@ -27,6 +27,7 @@ export const getMeasurements = token => async dispach => {
         Authorization: token,
       },
     });
+    console.log(data);
     dispach({
       type: 'GET_MEASUREMENTS',
       payload: data.measurements,

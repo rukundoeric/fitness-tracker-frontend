@@ -8,6 +8,7 @@ import '../assets/css/icons/material-design-iconic-font/css/materialdesignicons.
 // Import styles
 import '../assets/css/style.css';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-circular-progressbar/dist/styles.css';
 
 import {
   Route,

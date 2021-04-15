@@ -333,7 +333,7 @@ a {
   background-color: #f3f3f3;
   height: 100%; }
   .more-container .section-1 {
-    background-color: white; }
+    background-color: #FDFDFD; }
     .more-container .section-1 .profile-pic {
       height: 50px;
       width: 50px;
@@ -350,7 +350,7 @@ a {
   background-color: #f3f3f3;
   height: 100%; }
   .things-to-measure .ttm-item {
-    background-color: white; }
+    background-color: #FDFDFD; }
     .things-to-measure .ttm-item img {
       width: 30px;
       height: 30px; }
@@ -386,7 +386,7 @@ a {
   background-color: #f3f3f3;
   height: 100%; }
   .new-measurements .ttm-item {
-    background-color: white;
+    background-color: #FDFDFD;
     border: 4px solid #f3f3f3;
     height: 150px;
     cursor: pointer; }
@@ -418,6 +418,33 @@ a {
         font-size: 20px; }
   .create-measurements .div-2 {
     background-color: #f3f3f3; }
+
+.measurement-list {
+  background-color: #f3f3f3;
+  max-height: calc(100vh - 135px);
+  overflow-y: scroll; }
+  .measurement-list .graph {
+    width: 30px;
+    height: 30px; }
+  .measurement-list .date {
+    color: #4d4d4d;
+    font-size: 15px;
+    font-weight: 600; }
+  .measurement-list .info-d {
+    color: #9b9b9b; }
+  .measurement-list .value {
+    font-size: 16px;
+    font-weight: 500;
+    color: #424242; }
+  .measurement-list .unit {
+    color: #9b9b9b;
+    font-size: 12px; }
+  .measurement-list .m-item {
+    background-color: #FDFDFD;
+    border-bottom: 1px solid #f3f3f3;
+    cursor: pointer; }
+    .measurement-list .m-item:hover {
+      background-color: #ececec; }
 
 .loader {
   height: 100%; }

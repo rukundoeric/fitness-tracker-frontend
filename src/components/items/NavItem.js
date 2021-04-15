@@ -6,10 +6,10 @@ export default function NavItem({ nav: { icon, name, path: url }, path }) {
   return (
     <Link
       to={url}
-      className={`${url === path ? 'active' : ''} nav-item col-3 col-lg-12 d-flex align-items-center justify-content-center`}
+      className={`${url === path ? 'active' : ''} nav-item col-3 col-lg-12 d-flex align-items-center justify-content-center justify-content-lg-start`}
     >
       <div
-        className="d-flex d-lg-block flex-column flex-lg-row align-items-center justify-content-around"
+        className="d-flex d-lg-block mx-lg-4 flex-column flex-lg-row align-items-center justify-content-around"
       >
         <i className={`${icon}`} />
         <small className="mt-1 mx-lg-2">{name}</small>

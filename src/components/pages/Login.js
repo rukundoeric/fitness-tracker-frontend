@@ -28,6 +28,9 @@ const Login = ({
   };
 
   useEffect(() => {
+    cookie.remove('ft-current-user');
+  }, []);
+  useEffect(() => {
     switch (auth.status) {
       case 'success': {
         handleLoginSuccess(JSON.stringify(auth.data.user));

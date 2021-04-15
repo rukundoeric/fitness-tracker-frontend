@@ -5,9 +5,11 @@ import React, {
 import cookie from 'react-cookies';
 import jwt from 'jsonwebtoken';
 import PropTypes from 'prop-types';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import key from 'uniqid';
 import Loader from '../commons/loader';
+import Item from '../items/MeasurementRangeItem';
 import { getThingToMeasure } from '../../redux/actions/ThingsToMeasure';
 import { getMeasurements } from '../../redux/actions/Measurements';
 
@@ -20,14 +22,34 @@ const Measurements = ({
   if (!currentUser) {
     return (<Redirect to={`/login?redirect=${pathname}`} />);
   }
+  const progressBar = useRef();
   // const dispach = useDispatch();
-  // const [measurementsList, setMeasurementsList] = useState(initialState);
+  const [measurementsList, setMeasurementsList] = useState({});
 
   useEffect(() => { getMeasurements(currentUser.token); }, []);
-  // if (ttMeasure.status === 'pending') { return (<Loader />); }
+  useEffect(() => { setMeasurementsList(measurements.mList); }, [measurements.mList]);
+
+  const mlKeys = measurementsList
+    ? Object.keys(measurementsList)
+      .sort((a, b) => new Date(b) - new Date(a))
+    : [];
+
   return (
-    <div className="create-measurements d-flex flex-column">
-      <h1>Measurements</h1>
+    <div className="measurement-list d-flex flex-column">
+      <div ref={progressBar} className="hidden">
+        <div className="progress">
+          <div className="indeterminate"> </div>
+        </div>
+      </div>
+      <div className="range-list d-flex flex-column">
+        {mlKeys.length > 0 ? mlKeys.map(objKey => (
+          <Item
+            key={key()}
+            title={objKey}
+            measurementsList={measurementsList[objKey]}
+          />
+        )) : (<div />)}
+      </div>
     </div>
   );
 };

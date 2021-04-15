@@ -3,7 +3,7 @@
   height: 100%;
 
   .ttm-item {
-    background-color: white;
+    background-color: $color_white;
     border: 4px solid #f3f3f3;
     height: 150px;
     cursor: pointer;
@@ -61,5 +61,47 @@
   .div-2 {
     background-color: #f3f3f3;
     // border: 1px solid green;
+  }
+}
+
+.measurement-list {
+  background-color: #f3f3f3;
+  max-height: calc(100vh - 135px);
+  overflow-y: scroll;
+
+  .graph {
+    width: 30px;
+    height: 30px;
+  }
+
+  .date {
+    color: rgb(77, 77, 77);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .info-d {
+    color: rgb(155, 155, 155);
+  }
+
+  .value {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(66, 66, 66);
+  }
+
+  .unit {
+    color: rgb(155, 155, 155);
+    font-size: 12px;
+  }
+
+  .m-item {
+    background-color: $color_white;
+    border-bottom: 1px solid #f3f3f3;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #ececec;
+    }
   }
 }

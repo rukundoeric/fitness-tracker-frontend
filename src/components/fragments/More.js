@@ -6,26 +6,31 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const options = [
-  {
-    icon: 'ti-settings',
-    title: 'Manage things to measure',
-    access: ['admin'],
-    path: '/things-to-measure',
-  },
-  {
-    icon: 'ti-help',
-    title: 'Help',
-    access: ['user', 'admin'],
-    path: '/help',
-  },
-];
-
 const More = ({
   currentUser: {
     role, name, email,
   },
 }) => {
+  const options = [
+    {
+      icon: 'ti-settings',
+      title: 'Manage things to measure',
+      access: ['admin'],
+      path: '/things-to-measure',
+    },
+    {
+      icon: 'ti-help',
+      title: 'Help',
+      access: ['user', 'admin'],
+      path: '/help',
+    },
+    {
+      icon: 'icon-logout',
+      title: 'Logout',
+      access: ['user', 'admin'],
+      path: '/login',
+    },
+  ];
   const filterOptions = options.filter(object => object.access.includes(role));
 
   return (
@@ -41,8 +46,14 @@ const More = ({
       </div>
       <div className="section-2 d-flex flex-column flex-grow-1">
         {
-          filterOptions.map(({ path, icon, title }) => (
-            <Link to={path} key={key()} className="option-item p-3">
+          filterOptions.map(({
+            path, icon, title,
+          }) => (
+            <Link
+              to={path}
+              key={key()}
+              className="option-item p-3"
+            >
               <i className={icon} />
               <span className="mx-3">{title}</span>
             </Link>

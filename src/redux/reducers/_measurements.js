@@ -1,6 +1,6 @@
 const initialState = {
   cmResponse: {},
-  mList: [],
+  mList: {},
 };
 
 export default (state = initialState, action) => {
