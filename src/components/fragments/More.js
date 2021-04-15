@@ -40,8 +40,8 @@ const More = ({
           <i>{name.substring(0, 2).toUpperCase()}</i>
         </div>
         <div className="d-flex flex-column mx-2">
-          <small className="name fw-bold mt-1">{name}</small>
-          <small className="email">{email}</small>
+          <small data-testid="profile-name" className="name fw-bold mt-1">{name}</small>
+          <small data-testid="profile-email" className="email">{email}</small>
         </div>
       </div>
       <div className="section-2 d-flex flex-column flex-grow-1">
