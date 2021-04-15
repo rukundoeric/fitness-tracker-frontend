@@ -19,6 +19,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         mList: payload,
+        status,
       };
     case 'C_M_RESET':
       return {

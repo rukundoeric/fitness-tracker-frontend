@@ -25,8 +25,11 @@ const NewThingToMeasure = ({
     const data = new FormData(e.target);
     const icon = data.get('icon');
     const name = data.get('name');
+    const maxValue = data.get('maxValue');
     const unit = data.get('unit');
-    createThingToMeasure({ icon, name, unit }, currentUser.token);
+    createThingToMeasure({
+      icon, name, maxValue, unit,
+    }, currentUser.token);
     progressBar.current.classList.remove('hidden');
   };
 
@@ -75,14 +78,22 @@ const NewThingToMeasure = ({
             appendIcon={<i className="ti-text" />}
           />
           <Inputfield
+            label="maxValue"
+            type="text"
+            id="maxvalue"
+            placeholder="Maximum value"
+            name="maxValue"
+            appendIcon={<i className="ti-text" />}
+          />
+          <Inputfield
             label="Unit"
             type="text"
             id="unit"
-            placeholder="kg, m/s or number"
+            placeholder="kg, km/h or number"
             name="unit"
             appendIcon={<i className="ti-text" />}
           />
-          {ttResponce.data.error ? (
+          {ttResponce.data.error && (
             <div className="error-container d-flex align-items-center mt-3">
               <span className="error" id="error">
                 {Object.keys(ttResponce.data.error).map(objKey => (
@@ -105,8 +116,6 @@ const NewThingToMeasure = ({
                 ))}
               </span>
             </div>
-          ) : (
-            <div />
           )}
           <div className="form-control btn_container mt-3">
             <input

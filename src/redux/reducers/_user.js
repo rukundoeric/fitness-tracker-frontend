@@ -1,15 +1,13 @@
-const initialState = () => {
-   
-}
-
-export default (state =  , action) => {
+export default (state = { signupResponce: { data: {} } }, action) => {
   const { type, payload, status } = action;
   switch (type) {
-    case 'USER_LOGIN':
+    case 'USER_SIGNUP':
       return {
         ...state,
-        ...payload,
-        status,
+        signupResponce: {
+          ...payload,
+          status,
+        },
       };
 
     default:

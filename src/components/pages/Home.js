@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import key from 'uniqid';

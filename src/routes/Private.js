@@ -9,7 +9,6 @@ import Progress from '../components/fragments/Progress';
 import More from '../components/fragments/More';
 import Help from '../components/fragments/Help';
 import CreateMeasurement from '../components/fragments/CreateMeasurement';
-import Users from '../components/fragments/Users';
 
 const redirectToMeasurements = () => <Redirect to="/measurements" />;
 
@@ -63,14 +62,6 @@ class Routes {
         Component: More,
         type: 'navigation',
         access: ['admin', 'user'],
-      },
-      {
-        path: '/users',
-        name: 'More',
-        icon: 'icon-settings',
-        Component: Users,
-        type: 'model',
-        access: ['admin'],
       },
       {
         path: '/things-to-measure',

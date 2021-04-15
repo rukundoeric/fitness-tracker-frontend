@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import cookie from 'react-cookies';
+import { Link } from 'react-router-dom';
 import QueryString from 'query-string';
 import image from '../../assets/images/logo.jpg';
 import Inputfield from '../commons/input';
@@ -53,7 +54,7 @@ const Login = ({
   }, [auth]);
 
   return (
-    <div className="row login-container ">
+    <div className="row login-container">
       <div className="container-fluid">
         <div className="valign-wrapper screenHeight d-flex align-items-center justify-content-center">
           <div className="col-md-8 card   setMaxWidth  inner-container ">
@@ -102,13 +103,15 @@ const Login = ({
                 )}
                 <br />
                 <small className="forget-password">
-                  <span className="pr-3">Forgot password?</span>
+                  <span className="pr-3">
+                    Don&apos;t have an account?
+                    <Link className="mx-2" to="/sign-up">Signup</Link>
+                  </span>
                 </small>
-                <div className="form-control btn_container mt-3">
+                <div className="form-control btn_container mt-4">
                   <input
                     type="submit"
                     className="btn btn-login"
-                      // onClick={this.handleLogin}
                     value="Login"
                   />
                 </div>

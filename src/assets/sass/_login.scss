@@ -71,17 +71,39 @@ a {
   border: 0;
   border-radius: 5px;
   box-shadow: 0 0 5px rgb(226, 226, 226);
+  max-height: 600px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 
   @media (max-width: 482px) {
     width: 100%;
   }
 }
 
+.inner-container::-webkit-scrollbar {
+  width: 3px;
+}
+
+.inner-container::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(233, 233, 233, 0.3);
+  border-radius: 0;
+}
+
+.inner-container::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background-color: $color_accent_1;
+}
+
 .forget-password {
   color: rgb(189, 189, 189);
 
-  span {
+  span,
+  a {
     color: lighten($color_accent_1, 20%);
+  }
+
+  a {
+    font-weight: 700;
   }
 }
 
@@ -179,11 +201,11 @@ a {
   font-size: 13px;
 }
 
-.login-container .input-inline-field .input-field>label:not(.label-icon).active {
+.login-container .input-inline-field .input-field > label:not(.label-icon).active {
   left: 20px;
 }
 
-.login-container .input-field>label {
+.login-container .input-field > label {
   width: 98%;
   text-indent: 10px;
 }
@@ -263,8 +285,7 @@ a {
   }
 }
 
-.progress
-.indeterminate:before {
+.progress .indeterminate::before {
   content: "";
   position: absolute;
   background-color: inherit;
@@ -276,8 +297,7 @@ a {
   animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
 }
 
-.progress
-.indeterminate:after {
+.progress .indeterminate::after {
   content: "";
   position: absolute;
   background-color: inherit;

@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React, {
-  useEffect, useState, useRef,
+  useEffect, useState,
 } from 'react';
 import cookie from 'react-cookies';
 import jwt from 'jsonwebtoken';
@@ -8,9 +7,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import key from 'uniqid';
-import Loader from '../commons/loader';
 import Item from '../items/MeasurementRangeItem';
-import { getThingToMeasure } from '../../redux/actions/ThingsToMeasure';
 import { getMeasurements } from '../../redux/actions/Measurements';
 
 const Measurements = ({
@@ -22,12 +19,13 @@ const Measurements = ({
   if (!currentUser) {
     return (<Redirect to={`/login?redirect=${pathname}`} />);
   }
-  const progressBar = useRef();
-  // const dispach = useDispatch();
+
   const [measurementsList, setMeasurementsList] = useState({});
 
   useEffect(() => { getMeasurements(currentUser.token); }, []);
-  useEffect(() => { setMeasurementsList(measurements.mList); }, [measurements.mList]);
+  useEffect(() => {
+    setMeasurementsList(measurements.mList);
+  }, [measurements.mList]);
 
   const mlKeys = measurementsList
     ? Object.keys(measurementsList)
@@ -36,19 +34,21 @@ const Measurements = ({
 
   return (
     <div className="measurement-list d-flex flex-column">
-      <div ref={progressBar} className="hidden">
+      {measurements.status === 'pending' && (
+      <div>
         <div className="progress">
           <div className="indeterminate"> </div>
         </div>
       </div>
+      )}
       <div className="range-list d-flex flex-column">
-        {mlKeys.length > 0 ? mlKeys.map(objKey => (
+        {mlKeys.length > 0 && mlKeys.map(objKey => (
           <Item
             key={key()}
             title={objKey}
             measurementsList={measurementsList[objKey]}
           />
-        )) : (<div />)}
+        ))}
       </div>
     </div>
   );
@@ -70,6 +70,7 @@ Measurements.propTypes = {
   measurements: PropTypes.shape({
     mList: PropTypes.shape({
     }),
+    status: PropTypes.string,
   }).isRequired,
   currentUser: PropTypes.shape({
     token: PropTypes.string,

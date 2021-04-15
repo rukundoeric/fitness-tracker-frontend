@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
 import axios from 'axios';
-import { NotBeforeError } from 'jsonwebtoken';
 import { thingsToMeasure, thingToMeasure } from './_api';
 
 export const createThingToMeasure = (body, token) => async dispach => {
