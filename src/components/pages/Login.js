@@ -28,9 +28,9 @@ const Login = ({
     history.push(redirect || '/');
   };
 
-  useEffect(() => {
-    cookie.remove('ft-current-user');
-  }, []);
+  // useEffect(() => {
+  //   cookie.remove('ft-current-user');
+  // }, []);
   useEffect(() => {
     switch (auth.status) {
       case 'success': {

@@ -28,7 +28,7 @@ const More = ({
       icon: 'icon-logout',
       title: 'Logout',
       access: ['user', 'admin'],
-      path: '/login',
+      path: '/log-out',
     },
   ];
   const filterOptions = options.filter(object => object.access.includes(role));

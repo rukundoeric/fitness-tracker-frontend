@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import _ from 'lodash';
+import cookie from 'react-cookies';
 import Measurements from '../components/fragments/Measurements';
 import ThingsToMeasure from '../components/fragments/ThingsToMeasure';
 import NewThingToMeasure from '../components/fragments/NewThingToMeasure';
@@ -11,6 +12,10 @@ import Help from '../components/fragments/Help';
 import CreateMeasurement from '../components/fragments/CreateMeasurement';
 
 const redirectToMeasurements = () => <Redirect to="/measurements" />;
+const logOut = () => {
+  cookie.remove('ft-current-user');
+  return (<redirectToMeasurements />);
+};
 
 class Routes {
   constructor() {
@@ -84,6 +89,14 @@ class Routes {
         name: 'More',
         icon: 'ti-help',
         Component: Help,
+        type: 'model',
+        access: ['admin', 'user'],
+      },
+      {
+        path: '/log-out',
+        name: 'More',
+        icon: 'ti-help',
+        Component: logOut,
         type: 'model',
         access: ['admin', 'user'],
       },
