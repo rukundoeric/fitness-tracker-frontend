@@ -18,21 +18,19 @@ Do you want to improve your fitness? Then Fitness Tracker is the perfect answer 
 
 ## Live Demo
 
-[Live Demo Link](https://meals-2021.herokuapp.com/)
+[Live Demo Link](https://fitness-tracker-f.herokuapp.com/)
 
 ## Getting Started
 NOTE: Make sure you have Node.js and npm or yarn installed in your PC.
+- First, setup back-end. follow this [Repo](https://github.com/rukundoeric/fitness-tracker-backend) to do so.
 - Clone this repo: `git clone https://github.com/rukundoeric/fitness-tracker-frontend.git`
 - Navigate into project directory: `cd fitness-tracker-frontend`
-- Create file called `.env.development`
-- Clone this repo in another directory`https://github.com/rukundoeric/fitness-tracker-backend.git`
-- Navigate to into project directory and then run `bundle install`
-- After that, then run `rails c` and then in rails console run `Rails.application.secrets.secret_key_base`. Copy the text you get and go back to front-end project.
-- open `.env.development` and initialize thise valiables
-  ```
+- Create file called `.env`
+- Go in `.env` ans setup env variables like:
+  ```ruby
     REACT_APP_API_URL=http://127.0.0.1:3000
-    REACT_APP_TOKEN_SECRET=VALUE YOU COPYED FROM THE PREVIOUS STEP
-  ```
+    REACT_APP_TOKEN_SECRET=XXXXXX    #copy the key you use when setting up back-end and replace XXXXX with it.
+  ``` 
 - Install all packages: `yarn install or npm install`
 - Start the app: `yarn start or npm start`
 
