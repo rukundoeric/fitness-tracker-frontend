@@ -53,7 +53,6 @@ const Measurements = ({
     </div>
   );
 };
-
 Measurements.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
