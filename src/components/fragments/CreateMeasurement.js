@@ -25,13 +25,13 @@ const CreateMeasurement = ({
     return (<Redirect to={`/login?redirect=${pathname}`} />);
   }
 
-  const dispach = useDispatch();
+  const dispatch = useDispatch();
   const progressBar = useRef();
   const [thingToMeasure, setThingToMeasure] = useState({});
 
   useEffect(() => {
     getThingToMeasure(currentUser.token, id);
-    dispach({ type: 'C_M_RESET' });
+    dispatch({ type: 'C_M_RESET' });
   }, []);
   useEffect(() => { setThingToMeasure(ttMeasure); }, [ttMeasure]);
   useEffect(() => {
@@ -39,7 +39,7 @@ const CreateMeasurement = ({
       case 'success':
         progressBar.current.classList.add('hidden');
         toast.success('Measurement recorded successfully');
-        dispach({ type: 'C_M_RESET' });
+        dispatch({ type: 'C_M_RESET' });
         push('/new-measurement');
         break;
       default:

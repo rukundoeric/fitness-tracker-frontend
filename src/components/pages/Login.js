@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import cookie from 'react-cookies';
 import { Link } from 'react-router-dom';
@@ -14,6 +14,8 @@ const Login = ({
   const progressBar = useRef();
   const emailInput = useRef();
   const passwordInput = useRef();
+  const dispatch = useDispatch();
+
   const handleLogin = e => {
     e.preventDefault();
     const data = new FormData(e.target);
@@ -23,14 +25,12 @@ const Login = ({
   };
   const handleLoginSuccess = user => {
     cookie.save('ft-current-user', user);
+    dispatch({ type: 'AUTH_RESET' });
     const redirect = location.state ? location.state.redirect
       : QueryString.parse(location.search).redirect;
     history.push(redirect || '/');
   };
 
-  // useEffect(() => {
-  //   cookie.remove('ft-current-user');
-  // }, []);
   useEffect(() => {
     switch (auth.status) {
       case 'success': {

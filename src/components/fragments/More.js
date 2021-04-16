@@ -3,14 +3,14 @@ import key from 'uniqid';
 import jwt from 'jsonwebtoken';
 import cookie from 'react-cookies';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const More = ({
-  currentUser: {
-    role, name, email,
-  },
-}) => {
+const More = ({ currentUser }) => {
+  if (!currentUser) {
+    return (<Redirect to="/login" />);
+  }
+  const handleLogout = () => cookie.remove('ft-current-user');
   const options = [
     {
       icon: 'ti-settings',
@@ -28,11 +28,11 @@ const More = ({
       icon: 'icon-logout',
       title: 'Logout',
       access: ['user', 'admin'],
-      path: '/log-out',
+      action: handleLogout,
     },
   ];
+  const { name, role, email } = currentUser;
   const filterOptions = options.filter(object => object.access.includes(role));
-
   return (
     <div className="more-container">
       <div className="section-1 p-3 d-flex">
@@ -47,11 +47,12 @@ const More = ({
       <div className="section-2 d-flex flex-column flex-grow-1">
         {
           filterOptions.map(({
-            path, icon, title,
+            path, icon, title, action,
           }) => (
             <Link
               to={path}
               key={key()}
+              onClick={action}
               className="option-item p-3"
             >
               <i className={icon} />
