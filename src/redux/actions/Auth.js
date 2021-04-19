@@ -5,6 +5,7 @@ export const logIn = auth => async dispach => {
   dispach({ type: 'USER_LOGIN', status: 'pending' });
   try {
     const { data } = await axios.post(login, auth);
+    // console.log(data);
     dispach({
       type: 'USER_LOGIN',
       payload: data,
