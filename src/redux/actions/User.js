@@ -1,9 +1,9 @@
-import axios from 'axios';
 import { signUp as signupUrl, getUser as getUserInfo } from './_api';
+import request from './_request';
 
 export const signUp = user => async dispach => {
   try {
-    const { data } = await axios.post(signupUrl, user);
+    const data = await request('post', signupUrl, null, user);
     dispach({
       type: 'USER_SIGNUP',
       payload: data,
@@ -17,11 +17,7 @@ export const signUp = user => async dispach => {
 export const getUser = (id, token) => async dispach => {
   dispach({ type: 'GET_USER_INFO', status: 'pending' });
   try {
-    const { data: { data } } = await axios.get(getUserInfo(id), {
-      headers: {
-        Authorization: token,
-      },
-    });
+    const { data } = await request('get', getUserInfo(id), token);
     dispach({
       type: 'GET_USER_INFO',
       payload: data,

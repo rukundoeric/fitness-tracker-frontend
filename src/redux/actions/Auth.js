@@ -1,11 +1,10 @@
-import axios from 'axios';
 import { login } from './_api';
+import request from './_request';
 
 export const logIn = auth => async dispach => {
   dispach({ type: 'USER_LOGIN', status: 'pending' });
   try {
-    const { data } = await axios.post(login, auth);
-    // console.log(data);
+    const data = await request('post', login, null, auth);
     dispach({
       type: 'USER_LOGIN',
       payload: data,

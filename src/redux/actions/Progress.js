@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { progress } from './_api';
+import request from './_request';
 
 const generateSeries = data => Object.keys(data).map(objKey => ({
   name: objKey,
@@ -9,11 +9,7 @@ const generateSeries = data => Object.keys(data).map(objKey => ({
 export default token => async dispach => {
   dispach({ type: 'GET_PROGRESS_REPORT', status: 'pending' });
   try {
-    const { data: { data } } = await axios.get(progress, {
-      headers: {
-        Authorization: token,
-      },
-    });
+    const { data } = await request('get', progress, token);
     dispach({
       type: 'GET_PROGRESS_REPORT',
       payload: {
