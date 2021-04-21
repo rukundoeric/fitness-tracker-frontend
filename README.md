@@ -1,6 +1,38 @@
-# Getting Started with Create React App
+# Fitness Tracker
+Do you want to improve your fitness? Then Fitness Tracker is the perfect answer for you. With this platform, users can track and improve body fitness in no time.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+| Signup      | Login       | Login       |
+| ----------- | ----------- | ----------- |
+| ![localhost_3001_measurements(Galaxy S5) (6)](https://user-images.githubusercontent.com/45217364/114933351-dbec8480-9e38-11eb-9cd2-591c30c1701c.png)      | ![localhost_3001_measurements(Galaxy S5) (5)](https://user-images.githubusercontent.com/45217364/114933483-01798e00-9e39-11eb-880f-4ebed7dbebc3.png)       | ![localhost_3001_measurements(Galaxy S5) (2)](https://user-images.githubusercontent.com/45217364/114933562-16562180-9e39-11eb-92a0-56fac5b0cead.png)       |
+| New Measurement      | Progress       | More       |
+| ![localhost_3001_measurements(Galaxy S5) (7)](https://user-images.githubusercontent.com/45217364/114934432-26223580-9e3a-11eb-8259-d4d2b3c6eac1.png)      | ![localhost_3001_measurements(Galaxy S5) (1)](https://user-images.githubusercontent.com/45217364/114934604-608bd280-9e3a-11eb-84cf-9531397e3e7d.png)       | ![localhost_3001_measurements(Galaxy S5) (4)](https://user-images.githubusercontent.com/45217364/114934748-9af56f80-9e3a-11eb-84b4-5eff83fa2f87.png)      |
+
+
+
+## Built With
+
+- React.js
+- SASS and CSS
+- Creat-React-App
+- Redux
+
+## Live Demo
+
+[Live Demo Link](https://fitness-tracker-f.herokuapp.com/)
+
+## Getting Started
+NOTE: Make sure you have Node.js and npm or yarn installed in your PC.
+- First, setup back-end. follow this [Repo](https://github.com/rukundoeric/fitness-tracker-backend) to do so.
+- Clone this repo: `git clone https://github.com/rukundoeric/fitness-tracker-frontend.git`
+- Navigate into project directory: `cd fitness-tracker-frontend`
+- Create file called `.env`
+- Go in `.env` ans setup env variables like:
+  ```ruby
+    REACT_APP_API_URL=http://127.0.0.1:3000
+    REACT_APP_TOKEN_SECRET=XXXXXX    #copy the key you use when setting up back-end and replace XXXXX with it.
+  ``` 
+- Install all packages: `yarn install or npm install`
+- Start the app: `yarn start or npm start`
 
 ## Available Scripts
 
@@ -35,36 +67,31 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Authors
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+👤 **Rukundo Eric**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- GitHub: [@githubhandle](https://github.com/rukundoeric)
+- Twitter: [@twitterhandle](https://twitter.com/rukundoeric005)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/rukundo-eric-000bba181/)
 
-### Code Splitting
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Contributions, issues, and feature requests are welcome!
 
-### Analyzing the Bundle Size
+Feel free to check the [issues page](https://github.com/rukundoeric/fitness-tracker-frontend/issues).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Show your support
 
-### Making a Progressive Web App
+Give a ⭐️ if you like this project!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Acknowledgments
 
-### Advanced Configuration
+- I would like to thank our code reviewer and anyone else who participated in making this done.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📝 License
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is [MIT](./LICENCE) licensed.
